@@ -18,13 +18,20 @@ namespace Middleware
         {
             //если мидлвар наследывается от интерфейса IMiddleware то нужно его зарегистрировать
             services.AddTransient<HostMiddleware>();
+            services.AddRazorPages();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            env.EnvironmentName = "Production";
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else if (env.IsProduction())
+            {
+                //app.UseExceptionHandler("/error");
+                app.UseStatusCodePagesWithRedirects("/error?code={0}");
             }
 
             app.UseRouting();
@@ -38,12 +45,20 @@ namespace Middleware
             app.UseMiddleware<UserAgentMiddleware>();
 
             //app.UseToken("1564");
-            app.UseMiddleware<TokenMiddleware>("123456");
+            //app.UseMiddleware<TokenMiddleware>("123456");
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
+
                 endpoints.MapGet("/", async context =>
                 {
                     await context.Response.WriteAsync("Hello World!");
+                });
+
+                endpoints.MapGet("/callerror", async context =>
+                {
+                    var x = 0;
+                    await context.Response.WriteAsync($"{5 / x}");
                 });
             });
         }
