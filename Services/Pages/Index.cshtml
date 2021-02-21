@@ -3,3 +3,14 @@
 @{
 }
 <h1>@Model._message</h1>
+
+<table>
+    @for(int i = 0; i < Services.Startup.Services.Count; i++)
+    {
+        <tr>
+            <td>@Services.Startup.Services[i].ServiceType.FullName</td>
+            <td>@Services.Startup.Services[i].ImplementationType?.FullName</td>
+            <td>@Services.Startup.Services[i].Lifetime</td>
+        </tr>
+    }
+</table>

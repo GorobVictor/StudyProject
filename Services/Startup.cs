@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Services.Middleware;
 using Services.Services;
 using Services.Services.Extensions;
 using System;
@@ -14,10 +15,11 @@ namespace Services
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        public static IServiceCollection Services { get; set; }
         public void ConfigureServices(IServiceCollection services)
         {
+            Services = services;
+
             //В данном случаем мы устанавливаем связь с сервисом через интерфейс
             //можно в конструкторе вызывать через IMessageSender
             services.AddTransient<IMessageSender, SmsMessageSender>();
@@ -34,6 +36,10 @@ namespace Services
             //так как он используется внутри класса
             services.AddTransient<MessageSender>();
 
+            services.AddTransient<Transient>(); //при каждом обращении к сервису создается новый объект сервиса 
+            services.AddScoped<Scoped>(); //для каждого запроса создается свой объект сервиса
+            services.AddSingleton<Singleton>(); //объект сервиса создается при первом обращении к нему, все последующие запросы используют один и тот же ранее созданный объект сервиса
+
             services.AddRazorPages();
             services.AddControllers();
         }
@@ -47,6 +53,8 @@ namespace Services
             }
 
             app.UseRouting();
+
+            app.UseMiddleware<ScopedTestMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

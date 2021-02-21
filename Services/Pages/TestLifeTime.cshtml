@@ -1,0 +1,17 @@
+﻿@page
+@model Services.Pages.TestLifeTimeModel
+@{
+}
+
+<table>
+    <tr>
+        <td>Transient</td>
+        <td>Scoped</td>
+        <td>Singleton</td>
+    </tr>
+    <tr>
+        <td>@Model.Transient.GetIndex()</td>
+        <td>@Model.Scoped.GetIndex()</td>
+        <td>@Model.Singleton.GetIndex()</td>
+    </tr>
+</table>
