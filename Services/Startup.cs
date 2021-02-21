@@ -38,7 +38,8 @@ namespace Services
 
             services.AddTransient<Transient>(); //при каждом обращении к сервису создается новый объект сервиса 
             services.AddScoped<Scoped>(); //для каждого запроса создается свой объект сервиса
-            services.AddSingleton<Singleton>(); //объект сервиса создается при первом обращении к нему, все последующие запросы используют один и тот же ранее созданный объект сервиса
+            services.AddSingleton<Singleton>(); //объект сервиса создается при первом обращении к нему, все последующие
+                                                //запросы используют один и тот же ранее созданный объект сервиса
 
             services.AddRazorPages();
             services.AddControllers();
