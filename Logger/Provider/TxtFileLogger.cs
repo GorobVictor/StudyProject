@@ -32,7 +32,7 @@ namespace Logger.Provider
             {
                 lock (_lock)
                 {
-                    using (var stream = new StreamWriter(_filePath, true, Encoding.UTF8))
+                    using (var stream = new StreamWriter(_filePath.Replace("{date}", DateTime.Now.ToString("yyyy-MM-dd")), true, Encoding.UTF8))
                     {
                         string color;
                         switch (logLevel)
@@ -41,14 +41,26 @@ namespace Logger.Provider
                                 color = "green";
                                 break;
                             case LogLevel.Error:
+                                color = "darkred";
+                                break;
+                            case LogLevel.Critical:
                                 color = "red";
+                                break;
+                            case LogLevel.Debug:
+                                color = "dimgrey";
+                                break;
+                            case LogLevel.Warning:
+                                color = "yellow";
                                 break;
                             default:
                                 color = "black";
                                 break;
                         }
-                        stream.WriteLine($"<h3 style=\"color: {color};\">{state}</h3>");
-                        stream.WriteLine($"<p1>{formatter(state, exception)}</p1><br>");
+                        stream.WriteLine($"<h3 style=\"color: {color}; background-color: black;\">{state} <p1 style=\"color: white;\"> - {DateTime.Now}</p1></h3>");
+                        stream.WriteLine($"<p1>{exception?.Message}</p1><br>");
+                        stream.WriteLine($"<p1>{exception?.StackTrace}</p1><br>");
+                        stream.WriteLine($"<p1>{exception?.InnerException?.Message}</p1><br>");
+                        stream.WriteLine($"<p1>{exception?.InnerException?.StackTrace}</p1><br>");
                         stream.WriteLine($"<p1>{new string('-', 100)}</p1><br>");
                     }
                 }

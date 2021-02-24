@@ -19,7 +19,7 @@ namespace Logger
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-            .ConfigureLogging(options => options.AddProvider(new TxtFileLoggerProvider("filename.html")))
+            .ConfigureLogging(options => options.AddProvider(new TxtFileLoggerProvider("filename_{date}.html")))
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
