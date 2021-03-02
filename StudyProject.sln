@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Configuration", "Configuration\Configuration.csproj", "{BA4A4DBC-CD71-4735-AFF7-7A69006B0BCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Routing", "Routing\Routing.csproj", "{D75A12BD-CB02-4C09-8E72-A4DE480F1953}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Routing", "Routing\Routing.csproj", "{D75A12BD-CB02-4C09-8E72-A4DE480F1953}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoutingV2", "RoutingV2\RoutingV2.csproj", "{DD9B1CAF-6BC8-4BF0-9BA4-719D6322B84A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoutingV2", "RoutingV2\RoutingV2.csproj", "{DD9B1CAF-6BC8-4BF0-9BA4-719D6322B84A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logger", "Logger\Logger.csproj", "{5E9C6417-9C7C-45B5-B418-83DDABB5D8A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpContext", "HttpContext\HttpContext.csproj", "{5CB37E3D-05D1-43E3-A19F-20964CD576B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{DD9B1CAF-6BC8-4BF0-9BA4-719D6322B84A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD9B1CAF-6BC8-4BF0-9BA4-719D6322B84A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD9B1CAF-6BC8-4BF0-9BA4-719D6322B84A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E9C6417-9C7C-45B5-B418-83DDABB5D8A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E9C6417-9C7C-45B5-B418-83DDABB5D8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E9C6417-9C7C-45B5-B418-83DDABB5D8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E9C6417-9C7C-45B5-B418-83DDABB5D8A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CB37E3D-05D1-43E3-A19F-20964CD576B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB37E3D-05D1-43E3-A19F-20964CD576B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB37E3D-05D1-43E3-A19F-20964CD576B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB37E3D-05D1-43E3-A19F-20964CD576B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
